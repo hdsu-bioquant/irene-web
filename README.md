@@ -1,1 +1,5 @@
 This repository is a web interface of the outputs of [Irene](https://github.com/qwang-big/irene), here is the [homepage](https://qwang-big.github.io/irene-web)
+[Network enrichment](https://hdsu-bioquant.github.io/irene-web/docs/Network_enrichment.pdf)
+[Epigenome browser](https://hdsu-bioquant.github.io/irene-web/docs/Browser.pdf)
+[Ranking plot](https://hdsu-bioquant.github.io/irene-web/docs/Ranking_lists.pdf)
+[ROC plot](https://hdsu-bioquant.github.io/irene-web/docs/ROC.pdf)
