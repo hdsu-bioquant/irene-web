@@ -70,7 +70,7 @@ function showPtinfo(d){
 	  .append("tr")
 	  .html(function(d,i) { return tdfill(d, i) })
 	legend2(col2, root.append("span")
-	  .style("white-space", "nowrap"))
+	  .style("white-space", "nowrap"),5,20)
 }
 
 function plotPt(data){
@@ -189,30 +189,30 @@ function getParameterMap () {
     return qmap;
 }
 
-function legend(cols, id, left, right) {
+function legend(cols, id, left, right, w, h) {
 	var panel = d3.select(id)
   	panel.selectAll("*").remove()
 	panel.append('span').text(left)
-	var svg = panel.append('svg').attr("width", 5*cols.length).attr("height", 20)
+	var svg = panel.append('svg').attr("width", w*cols.length).attr("height", h)
 	for(i in cols)
 	svg.append('rect')
-	.attr('x',5*i)
+	.attr('x',w*i)
 	.attr('y',0)
-	.attr('width',5)
-	.attr('height',20)
+	.attr('width',w)
+	.attr('height',h)
 	.attr('fill', cols[i] )
 	panel.append('span').text(right)
 }
 
-function legend2(cols, panel) {
+function legend2(cols, panel, w, h) {
 	panel.append('span').text(shortd(settings.low))
-	var svg = panel.append('svg').attr("width", 5*col2.length).attr("height", 20)
+	var svg = panel.append('svg').attr("width", w*col2.length).attr("height", h)
 	for(i in cols)
 	svg.append('rect')
-	.attr('x',5*i)
+	.attr('x',w*i)
 	.attr('y',0)
-	.attr('width',5)
-	.attr('height',20)
+	.attr('width',w)
+	.attr('height',h)
 	.attr('fill', col2[i] )
 	panel.append('span').text(shortd(settings.high))
 }
@@ -262,8 +262,8 @@ function heatmapImpl() {
 	  root.selectAll("*").remove()
     var tooltip = d3.select("#tooltip")
     color = d3.scale.linear().domain([d3.min(dPC),0,d3.max(dPC)]).range(["#00f", "#fff", "#f00"]).nice()
-	  legend(cols, "#legend", "Epigenome intensity percentage scale: 0%", "100%")
-	  legend(col2, "#legend2", "PC1: "+shortd(d3.min(dPC)), shortd(d3.max(dPC)))
+	  legend(cols, "#legend", "Epigenome intensity percentage scale: 0%", "100%", 3, 20)
+	  legend(col2, "#legend2", "PC1: "+shortd(d3.min(dPC)), shortd(d3.max(dPC)), 3, 20)
 	  var h=20, y=0, x=0, W=1500, H=h*names.length
 	  var s = parseInt(d.s)
 	  var e = parseInt(d.e)
@@ -529,7 +529,7 @@ function plotD(i, j){
 		.attr('y',10*k+y)
 		.attr('width',w*Math.abs(f))
 		.attr('height',10)
-		.attr('fill', f>0?'#f00':'#00f' )
+		.attr('fill', f>0?'#fc0':'#0cf' )
 		y += 5
 	}
 }
@@ -556,7 +556,7 @@ function showinfo(d, i){
 	legend2(col2, root.append("span")
 	  .style("height", "25px")
 	  .style("white-space", "nowrap")
-	  .attr("id", "info-legend"+i))
+	  .attr("id", "info-legend"+i), 5, 20)
 }
 
 function strokecolor(d) {
