@@ -169,6 +169,7 @@ function heatmap(d) {
   curMap.s = Math.max(0,d.id-200)
   curMap.e = d.id+200
   d3.select("head").select('title').text(d.name)
+  d3.select("#gname").text(d.name)
   heatmapImpl()
 }
 

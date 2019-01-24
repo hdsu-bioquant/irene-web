@@ -322,7 +322,7 @@ function subnetwork(params) {
 						.style("fill-opacity", active ? 0.5 : 1);
 				});
 
-		netLegend.append("line")
+		/*netLegend.append("line")
 			.attr("x1", 0)
 			.attr("x2", netLegendBox)
 			.style("stroke-width", edgeWidth)
@@ -331,7 +331,47 @@ function subnetwork(params) {
 		netLegend.append("text")
 			.attr("x", 8 + netLegendBox)
 			.attr("y", 3)
-			.text(function(n){ return n; });
+			.text(function(n){ return n; });*/
+
+		netLegend.append("rect")
+			.attr("x", 0)
+			.attr("y", 0)
+			.style("width", 0.5 * netLegendBox)
+			.style("height", netLegendBox)
+			.style("fill", hot);
+
+		netLegend.append("rect")
+			.attr("x", 0)
+			.attr("y", 0)
+			.style("width", netLegendBox)
+			.style("height", netLegendBox)
+			.style("fill-opacity", 0)
+			.style("stroke", "#000");
+
+		netLegend.append("text")
+			.attr("x", 8 + netLegendBox)
+			.attr("y", 11)
+			.text("PromEnh");
+
+		netLegend.append("rect")
+			.attr("x", 0.5 * netLegendBox)
+			.attr("y", 20)
+			.style("width", 0.5 * netLegendBox)
+			.style("height", netLegendBox)
+			.style("fill", hot);
+
+		netLegend.append("rect")
+			.attr("x", 0)
+			.attr("y", 20)
+			.style("width", netLegendBox)
+			.style("height", netLegendBox)
+			.style("fill-opacity", 0)
+			.style("stroke", "#000");
+
+		netLegend.append("text")
+			.attr("x", 8 + netLegendBox)
+			.attr("y", 32)
+			.text("PromOnly");
 
 		netLegend.attr("transform", function(d, i){
 			return "translate(" + (width-d3.select(this).node().getBBox().width) + "," + ((i+1)*netLegendBox) + ")";
@@ -365,6 +405,9 @@ function subnetwork(params) {
 				  .attr('offset', '0%')
 				  .attr('style', 'stop-color:#fff;stop-opacity:1');
 				gradient.append('svg:stop')
+				  .attr('offset', '30%')
+				  .attr('style', 'stop-color:#fff;stop-opacity:1');
+				gradient.append('svg:stop')
 				  .attr('offset', '100%')
 				  .attr('style', 'stop-color:' + hot + ';stop-opacity:1');
 			  });
@@ -380,7 +423,7 @@ function subnetwork(params) {
 		
 		heatLegend.append('span')
 		  .style('float', 'left')
-		  .text("10%")
+		  .text("100%..........10%")
 		  //.text(heatFormat(d3.min(heatRange)));
 
 		heatLegend.append('span')
