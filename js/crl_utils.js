@@ -335,6 +335,20 @@ function heatmapImpl() {
 	           return tooltip.style("visibility", "hidden")
 	      })
 				y += h
+				if (i == d.id)
+					plot.append('svg:path')
+					.attr('transform', function(d) { return 'translate(' + (x+w/2) + ',' + (h-5) + ')' })
+					.attr("d", d3.svg.symbol()
+					.type(function(d) { return d3.svg.symbolTypes[4] })
+					.size(function(d) { return 40 }))
+					.attr('fill', function(d) { return "#f00" })
+				else if (intc != undefined && getIntEnh(d.name,intc.sel).indexOf(ids[i])!=-1)
+					plot.append('svg:path')
+					.attr('transform', function(d) { return 'translate(' + (x+w/2) + ',' + (h-5) + ')' })
+					.attr("d", d3.svg.symbol()
+					.type(function(d) { return d3.svg.symbolTypes[4] })
+					.size(function(d) { return 40 }))
+					.attr('fill', function(d) { return "#A020F0" })
 	      for(var j=0; j<data[i].length; j++) {
 		      plot.append('rect')
       	  .datum(round2p((code.indexOf(data[i].charAt(j))-drange[0])/(drange[2]-drange[0])))
@@ -353,20 +367,6 @@ function heatmapImpl() {
 			    .on("mouseout", function(){
 			         return tooltip.style("visibility", "hidden")
 			    })
-					if (i == d.id)
-						plot.append('svg:path')
-					  .attr('transform', function(d) { return 'translate(' + (x+w/2) + ',' + (h-5) + ')' })
-						.attr("d", d3.svg.symbol()
-						.type(function(d) { return d3.svg.symbolTypes[4] })
-						.size(function(d) { return 40 }))
-						.attr('fill', function(d) { return "#f00" })
-					else if (intc != undefined && getIntEnh(d.name,intc.sel).indexOf(ids[i])!=-1)
-						plot.append('svg:path')
-					  .attr('transform', function(d) { return 'translate(' + (x+w/2) + ',' + (h-5) + ')' })
-						.attr("d", d3.svg.symbol()
-						.type(function(d) { return d3.svg.symbolTypes[4] })
-						.size(function(d) { return 40 }))
-						.attr('fill', function(d) { return "#A020F0" })
 				  y += h
 		    }
       }else{
