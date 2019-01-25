@@ -138,17 +138,6 @@ var tooltip = d3.select("#tooltip")
     .text("Low significance <- - - - - - - - - - Promoter + Enhancer - - - - - - - - - -> High significance")
     .style("font-size", "16px")
 
-function plotName(names){
-	var title = names.map(function(d) {
-	  return d.x.split('-')[0];
-	})
-	.filter((v,i,a)=>a.indexOf(v)==i)
-	.join(" vs. ")
-	var tt = d3.select("head").select('title')
-	tt.text(title + " - " + tt.text())
-	d3.select("#title").text(title)
-}
-	
 function drawMain(error,data,names,dpc,prcomp,markergene){
 	d3.select("#loading").style("display", "none")
 	eigenVec = prcomp

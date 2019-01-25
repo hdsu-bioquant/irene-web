@@ -382,7 +382,8 @@ function subnetwork(params) {
 	  function renderGradientLegend() {
 		var heatLegend = selection.append('div')
 			.attr('id', 'subnetwork-legend')
-			.style('width', heatLegendWidth + 'px');
+			.style('width', heatLegendWidth + 'px')
+			.text("Rankings: ");
 
 		var gradient = heatLegend.append('svg')
 			.attr('width', heatLegendWidth)
@@ -484,7 +485,7 @@ function subnetwork(params) {
   return chart;
 }
 
-function drawMain(error, json, dpc, pathway, prcomp, rankdata) {
+function drawMain(error, json, names, dpc, pathway, prcomp, rankdata) {
 	d3.select("#loading").style("display", "none")
 	var fig = d3.select("#figures")
 	setPCs(dpc,500000)
@@ -543,11 +544,12 @@ function drawMain(error, json, dpc, pathway, prcomp, rankdata) {
 			.style("margin-bottom", "30px")
 	  	g.append("hr");
 	});
-
+	plotName(names)
 }
 
 queue()
 	.defer(d3.json, sample+'nets'+ref+'.json')
+	.defer(d3.csv, sample+'name.csv')
 	.defer(d3.csv, sample+'seq.csv')
 	.defer(d3.json, sample+'pathways'+ref+'.json')
 	.defer(d3.csv, sample+'comp.csv')

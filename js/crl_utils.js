@@ -420,6 +420,17 @@ function heatmapImpl() {
     }
   }
 
+function plotName(names){
+	var title = names.map(function(d) {
+	 return d.x.split('-')[0];
+	})
+	.filter((v,i,a)=>a.indexOf(v)==i)
+	.join(" vs. ")
+	var tt = d3.select("head").select('title')
+	tt.text(title + " - " + tt.text())
+	d3.select("#title").text(title)
+}
+	
 function tdfill(d, i) {
 	var colord = d3.scale.linear()
 	  .domain([settings.low, 0, settings.high])
