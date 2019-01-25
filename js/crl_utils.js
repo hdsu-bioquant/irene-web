@@ -263,7 +263,7 @@ function heatmapImpl() {
 	  root.selectAll("*").remove()
     var tooltip = d3.select("#tooltip")
     color = d3.scale.linear().domain([d3.min(dPC),0,d3.max(dPC)]).range(["#00f", "#fff", "#f00"]).nice()
-	  legend(cols, "#legend", "Epigenome intensity percentage scale: 0%", "100%", 3, 20)
+	  legend(cols, "#legend", "Epigenome intensity percentage scale: 0%", "100%", 1, 20)
 	  legend(col2, "#legend2", "PC1: "+shortd(d3.min(dPC)), shortd(d3.max(dPC)), 3, 20)
 	  var h=20, y=0, x=0, W=1500, H=h*names.length
 	  var s = parseInt(d.s)

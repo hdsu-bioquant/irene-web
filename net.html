@@ -345,7 +345,7 @@ function subnetwork(params) {
 			.attr("y", 0)
 			.style("width", netLegendBox)
 			.style("height", netLegendBox)
-			.style("fill-opacity", 0)
+			.style("fill", "none")
 			.style("stroke", "#000");
 
 		netLegend.append("text")
@@ -365,7 +365,7 @@ function subnetwork(params) {
 			.attr("y", 20)
 			.style("width", netLegendBox)
 			.style("height", netLegendBox)
-			.style("fill-opacity", 0)
+			.style("fill", "none")
 			.style("stroke", "#000");
 
 		netLegend.append("text")
@@ -382,8 +382,7 @@ function subnetwork(params) {
 	  function renderGradientLegend() {
 		var heatLegend = selection.append('div')
 			.attr('id', 'subnetwork-legend')
-			.style('width', heatLegendWidth + 'px')
-			.text("Rankings: ");
+			.style('width', heatLegendWidth + 'px');
 
 		var gradient = heatLegend.append('svg')
 			.attr('width', heatLegendWidth)
@@ -418,6 +417,11 @@ function subnetwork(params) {
 			.attr('height', heatLegendHeight)
 			.style('fill', 'url(#' + gradientID + ')');
 
+		gradient.append("text")
+			.attr("x", 0)
+			.attr("y", heatLegendHeight-8)
+			.text("Rankings:");
+			
 		var labels = heatLegend.append('div')
 			.style('clear', 'both');
 		var format = d3.format("g");
